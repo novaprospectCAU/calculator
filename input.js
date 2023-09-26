@@ -16,219 +16,288 @@ const bEqual = document.querySelector(".button_equal");
 
 const textArea = document.querySelector(".output_interface");
 
-let temp = 0;
+let temporary = 0;
 let total = 0;
 let currentFlag = "none";
 let initFlag = true;
 
 b0.addEventListener("click", () => {
-  temp *= 10;
-  showText(temp);
+  temporary *= 10;
+  showText(temporary);
 });
 b1.addEventListener("click", () => {
-  temp *= 10;
-  temp += 1;
-  showText(temp);
+  temporary *= 10;
+  temporary += 1;
+  showText(temporary);
 });
 b2.addEventListener("click", () => {
-  temp *= 10;
-  temp += 2;
-  showText(temp);
+  temporary *= 10;
+  temporary += 2;
+  showText(temporary);
 });
 b3.addEventListener("click", () => {
-  temp *= 10;
-  temp += 3;
-  showText(temp);
+  temporary *= 10;
+  temporary += 3;
+  showText(temporary);
 });
 b4.addEventListener("click", () => {
-  temp *= 10;
-  temp += 4;
-  showText(temp);
+  temporary *= 10;
+  temporary += 4;
+  showText(temporary);
 });
 b5.addEventListener("click", () => {
-  temp *= 10;
-  temp += 5;
-  showText(temp);
+  temporary *= 10;
+  temporary += 5;
+  showText(temporary);
 });
 b6.addEventListener("click", () => {
-  temp *= 10;
-  temp += 6;
-  showText(temp);
+  temporary *= 10;
+  temporary += 6;
+  showText(temporary);
 });
 b7.addEventListener("click", () => {
-  temp *= 10;
-  temp += 7;
-  showText(temp);
+  temporary *= 10;
+  temporary += 7;
+  showText(temporary);
 });
 b8.addEventListener("click", () => {
-  temp *= 10;
-  temp += 8;
-  showText(temp);
+  temporary *= 10;
+  temporary += 8;
+  showText(temporary);
 });
 b9.addEventListener("click", () => {
-  temp *= 10;
-  temp += 9;
-  showText(temp);
+  temporary *= 10;
+  temporary += 9;
+  showText(temporary);
 });
 
 bAdd.addEventListener("click", () => {
   currentFlag = "add";
-  if (initFlag === true) {
-    total = temp;
-    temp = 0;
+  if (initFlag) {
+    total = temporary;
+    temporary = 0;
     initFlag = false;
   }
 });
 bSub.addEventListener("click", () => {
   currentFlag = "sub";
-  if (initFlag === true) {
-    total = temp;
-    temp = 0;
+  if (initFlag) {
+    total = temporary;
+    temporary = 0;
     initFlag = false;
   }
 });
 bMul.addEventListener("click", () => {
   currentFlag = "mul";
-  if (initFlag === true) {
-    total = temp;
-    temp = 0;
+  if (initFlag) {
+    total = temporary;
+    temporary = 0;
     initFlag = false;
   }
 });
 bDiv.addEventListener("click", () => {
   currentFlag = "div";
-  if (initFlag === true) {
-    total = temp;
-    temp = 0;
+  if (initFlag) {
+    total = temporary;
+    temporary = 0;
     initFlag = false;
   }
 });
 bEqual.addEventListener("click", () => {
-  if (currentFlag === "add") {
-    total += temp;
-  } else if (currentFlag === "sub") {
-    total -= temp;
-  } else if (currentFlag === "mul") {
-    total *= temp;
-  } else if (currentFlag === "div") {
-    if (temp === 0) {
-      showText("Error!");
-      total = 0;
-      initFlag = true;
-      currentFlag = "none";
-    } else {
-      total = Math.round(total / Number.parseFloat(temp));
-    }
-  }
-  if (currentFlag !== "none") {
-    showText(total);
-  }
-  temp = 0;
-  currentFlag = "none";
-  if (total === 0) {
-    initFlag = true;
-  } else {
-    initFlag = false;
-  }
-});
+  switch (currentFlag) {
+    case "add": {
+      total += temporary;
 
-const keyboard = document.querySelector(".keyboard");
+      break;
+    }
+    case "sub": {
+      total -= temporary;
 
-keyboard.addEventListener("keydown", (e) => {
-  if (e.key === "0") {
-    temp *= 10;
-    showText(temp);
-  } else if (e.key === "1") {
-    temp *= 10;
-    temp += 1;
-    showText(temp);
-  } else if (e.key === "2") {
-    temp *= 10;
-    temp += 2;
-    showText(temp);
-  } else if (e.key === "3") {
-    temp *= 10;
-    temp += 3;
-    showText(temp);
-  } else if (e.key === "4") {
-    temp *= 10;
-    temp += 4;
-    showText(temp);
-  } else if (e.key === "5") {
-    temp *= 10;
-    temp += 5;
-    showText(temp);
-  } else if (e.key === "6") {
-    temp *= 10;
-    temp += 6;
-    showText(temp);
-  } else if (e.key === "7") {
-    temp *= 10;
-    temp += 7;
-    showText(temp);
-  } else if (e.key === "8") {
-    temp *= 10;
-    temp += 8;
-    showText(temp);
-  } else if (e.key === "9") {
-    temp *= 10;
-    temp += 9;
-    showText(temp);
-  } else if (e.key === "+") {
-    currentFlag = "add";
-    if (initFlag === true) {
-      total = temp;
-      temp = 0;
-      initFlag = false;
+      break;
     }
-  } else if (e.key === "-") {
-    currentFlag = "sub";
-    if (initFlag === true) {
-      total = temp;
-      temp = 0;
-      initFlag = false;
+    case "mul": {
+      total *= temporary;
+
+      break;
     }
-  } else if (e.key === "*") {
-    currentFlag = "mul";
-    if (initFlag === true) {
-      total = temp;
-      temp = 0;
-      initFlag = false;
-    }
-  } else if (e.key === "/" || e.key === "%") {
-    currentFlag = "div";
-    if (initFlag === true) {
-      total = temp;
-      temp = 0;
-      initFlag = false;
-    }
-  } else if (e.key === "=" || e.key === "Enter") {
-    if (currentFlag === "add") {
-      total += temp;
-    } else if (currentFlag === "sub") {
-      total -= temp;
-    } else if (currentFlag === "mul") {
-      total *= temp;
-    } else if (currentFlag === "div") {
-      if (temp === 0) {
+    case "div": {
+      if (temporary === 0) {
         showText("Error!");
         total = 0;
         initFlag = true;
         currentFlag = "none";
       } else {
-        total = Math.round(total / Number.parseFloat(temp));
+        total = Math.round(total / Number.parseFloat(temporary));
       }
+
+      break;
     }
-    if (currentFlag !== "none") {
-      showText(total);
+    // No default
+  }
+  if (currentFlag !== "none") {
+    showText(total);
+  }
+  temporary = 0;
+  currentFlag = "none";
+  initFlag = total === 0 ? true : false;
+});
+
+const keyboard = document.querySelector(".keyboard");
+
+keyboard.addEventListener("keydown", (e) => {
+  switch (e.key) {
+    case "0": {
+      temporary *= 10;
+      showText(temporary);
+
+      break;
     }
-    temp = 0;
-    currentFlag = "none";
-    if (total === 0) {
-      initFlag = true;
-    } else {
-      initFlag = false;
+    case "1": {
+      temporary *= 10;
+      temporary += 1;
+      showText(temporary);
+
+      break;
     }
+    case "2": {
+      temporary *= 10;
+      temporary += 2;
+      showText(temporary);
+
+      break;
+    }
+    case "3": {
+      temporary *= 10;
+      temporary += 3;
+      showText(temporary);
+
+      break;
+    }
+    case "4": {
+      temporary *= 10;
+      temporary += 4;
+      showText(temporary);
+
+      break;
+    }
+    case "5": {
+      temporary *= 10;
+      temporary += 5;
+      showText(temporary);
+
+      break;
+    }
+    case "6": {
+      temporary *= 10;
+      temporary += 6;
+      showText(temporary);
+
+      break;
+    }
+    case "7": {
+      temporary *= 10;
+      temporary += 7;
+      showText(temporary);
+
+      break;
+    }
+    case "8": {
+      temporary *= 10;
+      temporary += 8;
+      showText(temporary);
+
+      break;
+    }
+    case "9": {
+      temporary *= 10;
+      temporary += 9;
+      showText(temporary);
+
+      break;
+    }
+    case "+": {
+      currentFlag = "add";
+      if (initFlag) {
+        total = temporary;
+        temporary = 0;
+        initFlag = false;
+      }
+
+      break;
+    }
+    case "-": {
+      currentFlag = "sub";
+      if (initFlag) {
+        total = temporary;
+        temporary = 0;
+        initFlag = false;
+      }
+
+      break;
+    }
+    case "*": {
+      currentFlag = "mul";
+      if (initFlag) {
+        total = temporary;
+        temporary = 0;
+        initFlag = false;
+      }
+
+      break;
+    }
+    case "/":
+    case "%": {
+      currentFlag = "div";
+      if (initFlag) {
+        total = temporary;
+        temporary = 0;
+        initFlag = false;
+      }
+
+      break;
+    }
+    case "=":
+    case "Enter": {
+      switch (currentFlag) {
+        case "add": {
+          total += temporary;
+
+          break;
+        }
+        case "sub": {
+          total -= temporary;
+
+          break;
+        }
+        case "mul": {
+          total *= temporary;
+
+          break;
+        }
+        case "div": {
+          if (temporary === 0) {
+            showText("Error!");
+            total = 0;
+            initFlag = true;
+            currentFlag = "none";
+          } else {
+            total = Math.round(total / Number.parseFloat(temporary));
+          }
+
+          break;
+        }
+        // No default
+      }
+      if (currentFlag !== "none") {
+        showText(total);
+      }
+      temporary = 0;
+      currentFlag = "none";
+      initFlag = total === 0 ? true : false;
+
+      break;
+    }
+    // No default
   }
 });
 
