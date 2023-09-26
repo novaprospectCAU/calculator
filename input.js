@@ -144,8 +144,8 @@ bEqual.addEventListener("click", () => {
 
 const keyboard = document.querySelector(".keyboard");
 
-keyboard.addEventListener("keydown", (e) => {
-  switch (e.key) {
+keyboard.addEventListener("keydown", (event) => {
+  switch (event.key) {
     case "0": {
       temporary *= 10;
       showText(temporary);
